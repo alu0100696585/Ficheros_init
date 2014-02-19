@@ -15,7 +15,7 @@
 
      <script type="text/javascript" src="ini.js"></script>
      
-     <script type="text/html" id="tk"> <li> <span class = "<%= token.type %>"> <%= match %> </span>\n </script>
+     <script type="text/html" id="tk"> <li> <span class = "<%= token.type %>"> <%= match %> </span>\n</script>
   </head>
   
   <body>
@@ -39,6 +39,7 @@
 		      f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
 		      '</li>');
 	}
+	calculate(evt);
 	document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
       }
     

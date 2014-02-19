@@ -6,8 +6,13 @@ $(document).ready(function() {
 
 // main
 function calculate(evt) {
-  var f = evt.target.files[0]; 
-
+  var f 
+  
+  if(evt.type != "drop")
+    f = evt.target.files[0]; 
+  else
+    f = evt.DataTransfer.files[0];
+  
   if (f) {
     var r = new FileReader();
     r.onload = function(e) { 
