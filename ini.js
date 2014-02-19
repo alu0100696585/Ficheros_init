@@ -38,11 +38,13 @@ function tokensToString(tokens) {
    return '<ol>\n'+r+'</ol>';
 }
 
-function lexer(input) {
+function lexer(input) {  
   var blanks         = /^\s+/;
-  var iniheader      = /^\[([^\]\r\n]+)\]/;
+  //Expresion regular modificada para que acepte  ] siempre que esten escapados en el nombre de
+  var iniheader      = /^\[((?:\\\]|[^\]\r\n])+)\]/;
   var comments       = /^[;#](.*)/;
-  var nameEqualValue = /^([^=;\r\n]+)=([^;\r\n]*)/;
+  //Expresion modificada para permitir asignaciones multilinea.
+  var nameEqualValue = /^([^=;\r\n]+)=((?:\/\s*\n|[^;\r\n])*)/;
   var any            = /^(.|\n)+/;
 
   var out = [];

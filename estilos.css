@@ -37,6 +37,15 @@ span.blanks { background-color: green }
 span.nameEqualValue { background-color: cyan }
 span.error { background-color: red }
 */
+
+#drop_zone{
+	width:50%;
+    background-color: black;
+    color: white;
+    padding: 40px 50px;
+    text-align: center;
+}
+
 body
 {
  background-color:#b0c4de;  /* blue */
