@@ -4,6 +4,8 @@ $(document).ready(function() {
    $("#fileinput").change(calculate);
 });
 
+$(document).ready(window.onload);
+
 // main
 function calculate(evt) {
   var f 
@@ -11,7 +13,7 @@ function calculate(evt) {
   if(evt.type != "drop")
     f = evt.target.files[0]; 
   else
-    f = evt.DataTransfer.files[0];
+    f = evt.dataTransfer.files[0];
   
   if (f) {
     var r = new FileReader();
@@ -22,8 +24,11 @@ function calculate(evt) {
       var pretty = tokensToString(tokens);
       
       out.className = 'unhidden';
-      initialinput.innerHTML = contents;
-      finaloutput.innerHTML = pretty;
+      
+      if (window.localStorage) localStorage.initialinput = contents;
+	initialinput.innerHTML = contents;
+      if (window.localStorage) localStorage.finaloutput = pretty;
+        finaloutput.innerHTML = pretty;
     }
     r.readAsText(f);
   } else { 
@@ -83,3 +88,15 @@ function lexer(input) {
   }
   return out;
 }
+
+//Añadir Local Store
+window.onload = function() {
+  // If the browser supports localStorage and we have some stored data
+  if (window.localStorage && localStorage.initialinput) {
+    document.getElementById("initialinput").innerHTML = localStorage.initialinput;
+    document.getElementById("out").className = "none";
+  }
+  if (window.localStorage && localStorage.finaloutput) {
+    document.getElementById("finaloutput").innerHTML = localStorage.finaloutput;
+  }
+};
