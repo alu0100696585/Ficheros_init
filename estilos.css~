@@ -69,7 +69,7 @@ table.center { margin-left:; margin-right:auto; }
 tr.error       { background-color: red; }
 pre.output   { background-color: white; }
 p            { color:white; text-align:center;}
-a            { color:#00BFFF }
+a            { color:#00BFFF}
 /*
 span.repeated { background-color: red }
 span.header { background-color: blue }

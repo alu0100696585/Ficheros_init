@@ -24,7 +24,7 @@
     
     <div>
     <p>
-    1) Carguen su fichero.ini para que se parsee adecuadamente.<br>
+    1) Carguen su fichero.ini para que se parsee adecuadamente.
     2) <a href="test/index.html">Pruebas Mocha. </a>
     </p>
     </div>
