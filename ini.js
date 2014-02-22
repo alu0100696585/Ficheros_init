@@ -54,7 +54,7 @@ function lexer(input) {
   var iniheader      = /^\[((?:\\\]|[^\]\r\n])+)\]/;
   var comments       = /^[;#](.*)/;
   //Expresion modificada para permitir asignaciones multilinea.
-  var nameEqualValue = /^([^=;\r\n]+)=((?:\/\s*\n|[^;\r\n])*)/;
+  var nameEqualValue = /^([^=;\r\n]+)=((?:\\\s*\n|[^;\r\n])*)/;
   var any            = /^(.|\n)+/;
 
   var out = [];
@@ -75,6 +75,8 @@ function lexer(input) {
     }
     else if (m = nameEqualValue.exec(input)) {
       input = input.substr(m.index+m[0].length);
+      m[2] = m[2].replace(/\n/g, ' ');
+      m[2] = m[2].replace(/\r/g, ' ');
       out.push({ type: 'nameEqualValue', match: m });
     }
     else if (m = any.exec(input)) {
